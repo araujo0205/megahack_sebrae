@@ -11,6 +11,7 @@
             class="d-flex justify-center"
             :key="pergunta"
             v-for="pergunta in perguntas"
+            style="margin:15px"
             >
             {{pergunta}}
           </v-row>
@@ -80,7 +81,17 @@ export default {
         })
 
         if (typeof r.data.context !== 'undefined') {
-          var userDefined = JSON.parse(localStorage.getItem('user_defined'))
+          var userDefined = {}
+          if (localStorage.getItem('user_defined')) {
+            userDefined = JSON.parse(localStorage.getItem('user_defined'))
+          }
+
+          if (typeof r.data.context.skills['main skill'].user_defined.fim !== 'undefined' && r.data.context.skills['main skill'].user_defined.fim === true) {
+            console.log('fim')
+            localStorage.removeItem('user_defined')
+            return
+          }
+
           userDefined.pontuacao = r.data.context.skills['main skill'].user_defined.pontuacao
           userDefined.pontosBaseNao = r.data.context.skills['main skill'].user_defined.pontosBaseNao
           userDefined.pontosBaseSim = r.data.context.skills['main skill'].user_defined.pontosBaseSim
@@ -124,20 +135,13 @@ export default {
   mounted () {
     var url = this.watson.url
 
-    axios.post(`${url}/session/create`,
-      {},
-      {
-        auth: {
-          username: 'apikey',
-          password: 'SArCxRv_9hs4AD27Uq2G0kOn0i-ropG63L7jRBA4n3AA'
-        }
-      }).then((r) => {
-      this.$store.commit('addSession', r.data.session_id)
+    axios.post(`${url}/session/create`)
+      .then((r) => {
+        this.$store.commit('addSession', r.data.session_id)
 
-      var configurarWatson = this.carregarDados()
-      this.responder(configurarWatson)
-      // this.responder({ input: { text: 'sim' } })
-    })
+        var configurarWatson = this.carregarDados()
+        this.responder(configurarWatson)
+      })
   }
 }
 </script>
