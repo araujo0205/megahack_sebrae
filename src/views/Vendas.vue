@@ -51,17 +51,16 @@ export default {
       this.opcoes = []
       this.responder(value)
     },
-    responder (resposta = {}) {
-      var url = 'https://cors-anywhere.herokuapp.com/' + this.watson.url
-
-      axios.post(`${url}/${this.watson.assistantId}/sessions/${this.$store.state.session}/message?version=${this.watson.version}`,
-        resposta,
-        {
-          auth: {
-            username: 'apikey',
-            password: process.env.VUE_APP_WATSON_API_KEY
-          }
-        }).then((r) => {
+    responder (resposta = null) {
+      var url = this.watson.url
+      var bodyFormData = new FormData()
+      if (resposta) {
+        resposta.input.options = { return_context: true }
+        bodyFormData.set('message', JSON.stringify(resposta))
+      }
+      axios.post(`${url}/session/message/${this.$store.state.session}`,
+        bodyFormData
+      ).then((r) => {
         this.perguntas = []
         this.opcoes = []
         r.data.output.generic.forEach(r => {
@@ -79,13 +78,53 @@ export default {
               break
           }
         })
+
+        if (typeof r.data.context !== 'undefined') {
+          var userDefined = JSON.parse(localStorage.getItem('user_defined'))
+          userDefined.pontuacao = r.data.context.skills['main skill'].user_defined.pontuacao
+          userDefined.pontosBaseNao = r.data.context.skills['main skill'].user_defined.pontosBaseNao
+          userDefined.pontosBaseSim = r.data.context.skills['main skill'].user_defined.pontosBaseSim
+
+          if (typeof r.data.context.skills['main skill'].user_defined.proxima_acao !== 'undefined') {
+            userDefined.proxima_acao = r.data.context.skills['main skill'].user_defined.proxima_acao
+          }
+
+          localStorage.setItem('user_defined', JSON.stringify(userDefined))
+        }
       })
+    },
+    carregarDados () {
+      var dadosLocais = localStorage.getItem('user_defined')
+      if (dadosLocais !== null) {
+        dadosLocais = JSON.parse(dadosLocais)
+        return {
+          input: {
+            text: dadosLocais.proxima_acao,
+            options: {
+              return_context: true
+            }
+          },
+          context: {
+            skills: {
+              'main skill': {
+                user_defined: {
+                  pontuacao: dadosLocais.pontuacao,
+                  pontosBaseNao: dadosLocais.pontosBaseNao,
+                  pontosBaseSim: dadosLocais.pontosBaseSim
+                }
+              }
+            }
+          }
+        }
+      }
+
+      return null
     }
   },
   mounted () {
-    var url = 'https://cors-anywhere.herokuapp.com/' + this.watson.url
+    var url = this.watson.url
 
-    axios.post(`${url}/${this.watson.assistantId}/sessions?version=${this.watson.version}`,
+    axios.post(`${url}/session/create`,
       {},
       {
         auth: {
@@ -94,7 +133,10 @@ export default {
         }
       }).then((r) => {
       this.$store.commit('addSession', r.data.session_id)
-      this.responder()
+
+      var configurarWatson = this.carregarDados()
+      this.responder(configurarWatson)
+      // this.responder({ input: { text: 'sim' } })
     })
   }
 }
