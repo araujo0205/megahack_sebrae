@@ -20,7 +20,7 @@
             :key="opcao.value.input.text"
             v-for="opcao in opcoes"
             >
-            <v-btn text small class="display-1" @click="enviarPergunta(opcao.value)">{{opcao.label}}</v-btn>
+            <v-btn small :color="corBotao(opcao.label)" style="padding:20px" class="headline" @click="enviarPergunta(opcao.value)">{{opcao.label}}</v-btn>
             </v-col>
           </v-row>
         </v-responsive>
@@ -130,6 +130,9 @@ export default {
       }
 
       return null
+    },
+    corBotao (valor) {
+      return valor === 'Não' ? 'error' : 'primary'
     }
   },
   mounted () {
