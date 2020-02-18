@@ -1,4 +1,9 @@
-# sebrae
+# Sabrina - Consultora Digital
+
+A Sabrina tem como objetivo auxiliar o micro e pequeno empreendedor nas principais dúvidas do setor de Vendas e financeiro.
+
+Utilizando a Inteligência Artificial Watson simplificamos o caminho entre entender o nível do empreendedor e qual o seu próximo passo.
+
 
 ## Project setup
 ```

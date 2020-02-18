@@ -1,0 +1,751 @@
+{
+  "intents": [],
+  "entities": [
+    {
+      "entity": "ir_para",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "vendas_futuras",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "solucao_3",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "financas_pessoais",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "solucao_1",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "empresa_dividas",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "custos_despesas",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "verificar_custos",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "elaborar_fluxo",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "fluxo_caixa",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "financas_empresa",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "solucao_2",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "solucao_4",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "mostrar_pontuacao",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "fim",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "voltar_depois",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": false
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "solucao_3",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Revisar custos e despesas é como cortar as unhas, sempre que cresce demais precisamos diminuir!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "Faça uma lista com todos os seus custos e despesas, revisando a lista periodicamente (ex.: 1 vez por mês) e pense:\n<ul>\n<li> Quais desses itens podem ser reduzidos ou eliminados ? </li>\n<li> Quais posso negociar um desconto com meus fornecedores ? </li>\n</ul>"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_8_1581993217281",
+      "context": {
+        "pontuacao": "<? $pontuacao + $pontosBaseNao ?>"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_2_1582062125138"
+      },
+      "conditions": "@ir_para:solucao_3",
+      "dialog_node": "node_7_1581993640827",
+      "previous_sibling": "node_5_1581993598116"
+    },
+    {
+      "type": "standard",
+      "title": "solucao_4",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Revisar custos e despesas é como cortar as unhas, sempre que cresce demais precisamos diminuir!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "Faça uma revisão de sua lista de custos e despesas, totalizando cada item, no final some tudo para saber o quanto foi gasto e faça uma porcentagem para determinar quantos % cada item representa dos seus gastos."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_8_1581993217281",
+      "context": {
+        "pontuacao": "<? $pontuacao + $pontosBaseNao ?>"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_2_1582062125138"
+      },
+      "conditions": "@ir_para:solucao_4",
+      "dialog_node": "node_1_1581993677903",
+      "previous_sibling": "node_7_1581993640827"
+    },
+    {
+      "type": "standard",
+      "title": "solucao_2",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Seu fluxo de caixa precisa de uma atualização! Se você não considera os custos e despesas futuras, comece elaborando uma lista com essas informações, as datas em que ela ocorrem e acrescente essa informações no seu fluxo de caixa."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "Depois precisamos estimar as vendas, cada empresa tem uma maneira de estimar as vendas, mas uma boa dica é: veja o quanto foi vendido nos meses anteriores, e considere um valor médio para os meses futuros."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "Com essa estimativa de vendas, custos e despesas você terá um verdadeiro fluxo de caixa e estará muita mais preparado para saber como uma despesa de última hora pode impactar financeiramente em seu empreendimento."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_8_1581993217281",
+      "context": {
+        "pontuacao": "<? $pontuacao + $pontosBaseNao ?>"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_2_1582062125138"
+      },
+      "conditions": "@ir_para:solucao_2",
+      "dialog_node": "node_5_1581993598116",
+      "previous_sibling": "node_7_1581993192930"
+    },
+    {
+      "type": "standard",
+      "title": "solucao_1",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Então está na hora de criamos o seu primeiro fluxo de caixa!\nParece complicado, mas na verdade é bem simples! Basta começar anotando o saldo da sua conta bancária no topo de um caderno e embaixo tudo o que entrar de dinheiro (suas vendas) e tudo o que sai (seus custos e despesas), fazendo isso todo dia você sabe exatamente o quanto tem de dinheiro em caixa naquele momento."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "Depois que fizer isso por uma semana, volte aqui para aprender como fazer uma previsão do seu fluxo de caixa e evitar ter um \"furo de caixa\", ou seja, descobrir só no dia que você não tem dinheiro para pagar uma conta."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_8_1581993217281",
+      "context": {
+        "pontuacao": "<? $pontuacao + $pontosBaseNao ?>"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_2_1582062125138"
+      },
+      "conditions": "@ir_para:solucao_1",
+      "dialog_node": "node_7_1581993192930"
+    },
+    {
+      "type": "standard",
+      "title": "fluxo_caixa",
+      "output": {
+        "generic": [
+          {
+            "title": "Você utiliza fluxo de caixa para controlar as finanças da sua empresa ?",
+            "options": [
+              {
+                "label": "Sim",
+                "value": {
+                  "input": {
+                    "text": "vendas_futuras"
+                  }
+                }
+              },
+              {
+                "label": "Não",
+                "value": {
+                  "input": {
+                    "text": "solucao_1"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "context": {
+        "pontuacao": "<? $pontuacao + $pontosBaseSim ?>"
+      },
+      "conditions": "@ir_para:fluxo_caixa",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_5_1581993151523",
+      "previous_sibling": "node_1_1581993111720"
+    },
+    {
+      "type": "standard",
+      "title": "financas_pessoais",
+      "output": {
+        "generic": [
+          {
+            "title": "Você sabe gerenciar as suas finanças pessoais ?",
+            "options": [
+              {
+                "label": "Sim",
+                "value": {
+                  "input": {
+                    "text": "financas_empresa"
+                  }
+                }
+              },
+              {
+                "label": "Não",
+                "value": {
+                  "input": {
+                    "text": "financas_empresa"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_7_1581992980974",
+      "previous_sibling": "Bem-vindo"
+    },
+    {
+      "type": "standard",
+      "title": "vendas_futuras",
+      "output": {
+        "generic": [
+          {
+            "title": "Você considera as vendas e conta futuras para estimar o seu fluxo de caixa ?",
+            "options": [
+              {
+                "label": "Sim",
+                "value": {
+                  "input": {
+                    "text": "elaborar_fluxo"
+                  }
+                }
+              },
+              {
+                "label": "Não",
+                "value": {
+                  "input": {
+                    "text": "solucao_2"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "context": {
+        "pontuacao": "<? $pontuacao + $pontosBaseSim ?>"
+      },
+      "conditions": "@ir_para:vendas_futuras",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_4_1581993246359",
+      "previous_sibling": "node_5_1581993151523"
+    },
+    {
+      "type": "standard",
+      "title": "mostrar pontuacao",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Obrigado pela sua opinião."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "A sua pontuação final é <? $pontuacao ?>"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "Parabéns! Você atingiu o nível 1 e ganhou uma sessão grátis de coaching de comunicação em vendas, uma oferta limitada válida até 23 de fevereiro de 2020, agende já neste <a href=\"https://paginas.nildargoncalves.com.br/nildar-goncalves-sabrina\" target=\"_blank\">link<a/>"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "@ir_para:mostrar_pontuacao",
+      "dialog_node": "node_1_1582062237156",
+      "previous_sibling": "node_2_1582062125138"
+    },
+    {
+      "type": "standard",
+      "title": "voltar depois",
+      "output": {
+        "generic": [
+          {
+            "title": "Depois de fazer o que sugeri, volte e me conte como foi, combinado ? ",
+            "options": [
+              {
+                "label": "Legal, gostei da ideia",
+                "value": {
+                  "input": {
+                    "text": "mostrar_pontuacao"
+                  }
+                }
+              },
+              {
+                "label": "Não gostei da ideia",
+                "value": {
+                  "input": {
+                    "text": "mostrar_pontuacao"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "@ir_para:voltar_depois",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_2_1582062125138",
+      "previous_sibling": "node_2_1582061376405"
+    },
+    {
+      "type": "standard",
+      "title": "verificar_custos",
+      "output": {
+        "generic": [
+          {
+            "title": "Você tem o costume de verificar periodicamente os custos e despesas da sua empresa ?",
+            "options": [
+              {
+                "label": "Sim",
+                "value": {
+                  "input": {
+                    "text": "custos_despesas"
+                  }
+                }
+              },
+              {
+                "label": "Não",
+                "value": {
+                  "input": {
+                    "text": "solucao_3"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "context": {
+        "pontuacao": "<? $pontuacao + $pontosBaseSim ?>"
+      },
+      "conditions": "@ir_para:verificar_custos",
+      "dialog_node": "node_7_1581993372087",
+      "previous_sibling": "node_3_1581993287855"
+    },
+    {
+      "type": "standard",
+      "title": "financas_empresa",
+      "output": {
+        "generic": [
+          {
+            "title": "Você sabe gerenciar as finanças da sua empresa ?",
+            "options": [
+              {
+                "label": "Sim",
+                "value": {
+                  "input": {
+                    "text": "empresa_dividas"
+                  }
+                }
+              },
+              {
+                "label": "Não",
+                "value": {
+                  "input": {
+                    "text": "empresa_dividas"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "context": {
+        "pontuacao": "<? $pontuacao + $pontosBaseSim ?>"
+      },
+      "conditions": "@ir_para:financas_empresa",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_3_1581993055331",
+      "previous_sibling": "node_7_1581992980974"
+    },
+    {
+      "type": "standard",
+      "title": "custos_despesas",
+      "output": {
+        "generic": [
+          {
+            "title": "Com relação aos custos e despesas você sabe quais itens tem maior representatividade em % ?",
+            "options": [
+              {
+                "label": "Sim",
+                "value": {
+                  "input": {
+                    "text": "fim"
+                  }
+                }
+              },
+              {
+                "label": "Não",
+                "value": {
+                  "input": {
+                    "text": "solucao_4"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "context": {
+        "pontuacao": "<? $pontuacao + $pontosBaseSim ?>"
+      },
+      "conditions": "@ir_para:custos_despesas",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_10_1581993409292",
+      "previous_sibling": "node_7_1581993372087"
+    },
+    {
+      "type": "standard",
+      "title": "fim",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Você chegou ao fim."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "A sua pontuação final é <? $pontuacao ?>"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "Parabéns! Você atingiu o nível 1 e ganhou uma sessão grátis de coaching de comunicação em vendas, uma oferta limitada válida até 23 de fevereiro de 2020, agende já neste <a href=\"https://paginas.nildargoncalves.com.br/nildar-goncalves-sabrina\" target=\"_blank\">link<a/>"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "@ir_para:fim",
+      "dialog_node": "node_2_1582061376405",
+      "previous_sibling": "node_10_1581993409292"
+    },
+    {
+      "type": "standard",
+      "title": "Em outros casos",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Eu não entendi. Você pode tentar reformular a frase."
+              },
+              {
+                "text": "Você pode reformular sua afirmação? Eu não estou entendendo."
+              },
+              {
+                "text": "Eu não entendi o sentido."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Em outros casos",
+      "previous_sibling": "node_8_1581993217281",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "folder",
+      "title": "Soluções",
+      "dialog_node": "node_8_1581993217281",
+      "previous_sibling": "node_1_1582062237156"
+    },
+    {
+      "type": "standard",
+      "title": "elaborar_fluxo",
+      "output": {
+        "generic": [
+          {
+            "title": "Qual das seguintes opções você utiliza para elaborar o seu fluxo de caixa?",
+            "options": [
+              {
+                "label": "Caderno",
+                "value": {
+                  "input": {
+                    "text": "verificar_custos"
+                  }
+                }
+              },
+              {
+                "label": "Planilha Eletrônica",
+                "value": {
+                  "input": {
+                    "text": "verificar_custos"
+                  }
+                }
+              },
+              {
+                "label": "Programa de computador",
+                "value": {
+                  "input": {
+                    "text": "verificar_custos"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "context": {
+        "pontuacao": "<? $pontuacao + $pontosBaseSim ?>"
+      },
+      "conditions": "@ir_para:elaborar_fluxo",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_3_1581993287855",
+      "previous_sibling": "node_4_1581993246359"
+    },
+    {
+      "type": "standard",
+      "title": "Bem-vindo",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Olá. Como posso te ajudar?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "",
+      "dialog_node": "Bem-vindo",
+      "previous_sibling": "node_7_1582061438423"
+    },
+    {
+      "type": "standard",
+      "title": "empresa_dividas",
+      "output": {
+        "generic": [
+          {
+            "title": "Sua empresa tem dívidas ?",
+            "options": [
+              {
+                "label": "Sim",
+                "value": {
+                  "input": {
+                    "text": "fluxo_caixa"
+                  }
+                }
+              },
+              {
+                "label": "Não",
+                "value": {
+                  "input": {
+                    "text": "fluxo_caixa"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "context": {
+        "pontuacao": "<? $pontuacao + $pontosBaseSim ?>"
+      },
+      "conditions": "@ir_para:empresa_dividas",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_1_1581993111720",
+      "previous_sibling": "node_3_1581993055331"
+    },
+    {
+      "type": "standard",
+      "title": "criar_variaveis",
+      "context": {
+        "pontuacao": 0,
+        "pontosBaseNao": 5,
+        "pontosBaseSim": 10
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_7_1581992980974"
+      },
+      "conditions": "welcome",
+      "dialog_node": "node_7_1582061438423"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "disambiguation": {
+      "prompt": "Você quis dizer:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "Nenhuma das anteriores"
+    },
+    "human_agent_assist": {
+      "prompt": "Você quis dizer:"
+    }
+  },
+  "learning_opt_out": false,
+  "name": "Financeiro",
+  "language": "pt-br",
+  "description": ""
+}

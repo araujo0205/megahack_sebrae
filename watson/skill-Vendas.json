@@ -1,0 +1,1606 @@
+{
+  "intents": [
+    {
+      "intent": "verdadeiro",
+      "examples": [
+        {
+          "text": "Sim já fiz"
+        },
+        {
+          "text": "Sim"
+        },
+        {
+          "text": "verdadeiro"
+        },
+        {
+          "text": "é verdade"
+        },
+        {
+          "text": "concordo"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "falta_vendas",
+      "examples": [
+        {
+          "text": "quero vender mais"
+        },
+        {
+          "text": "Como posso aumentar minhas vendas ?"
+        },
+        {
+          "text": "Minhas vendas estão baixas"
+        },
+        {
+          "text": "Quero aumentar as minhas vendas"
+        },
+        {
+          "text": "Desejo aumentar as vendas"
+        },
+        {
+          "text": "Preciso aumentar minhas vendas"
+        }
+      ],
+      "description": "Perguntas para calcular as despesas"
+    },
+    {
+      "intent": "falso",
+      "examples": [
+        {
+          "text": "não tentei"
+        },
+        {
+          "text": "Não"
+        },
+        {
+          "text": "Ainda não"
+        },
+        {
+          "text": "Não fiz"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "continuar_conversa",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "voltar_depois",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "fim",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "mostrar_pontuacao",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "produtos_necessidade",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "conseguiu_aumentar_vendas",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "fazer_anuncios",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "localizacao",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "perguntar_clientes",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "preco_concorrentes",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "preco_produto",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "promocoes",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "tipo_produtos",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": false
+    },
+    {
+      "entity": "sys-number",
+      "values": []
+    },
+    {
+      "entity": "sys-currency",
+      "values": []
+    },
+    {
+      "entity": "dicas_aumentar_vendas",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "ajustar_preco",
+          "synonyms": [
+            "Ajustar o preço"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "periodo_vende_menos",
+          "synonyms": [
+            "período que vende menos"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-percentage",
+      "values": []
+    },
+    {
+      "entity": "promocoes",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "2_por_1",
+          "synonyms": [
+            "2 pelo preço de 1",
+            "metade do preço",
+            "2 por 1"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "desconto",
+          "synonyms": [
+            "com desconto",
+            "usei desconto"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "brindes",
+          "synonyms": [
+            "fiz brindes",
+            "forneci brindes"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "fidelidade",
+          "synonyms": [
+            "cartão de fidelidade",
+            "sistema de fidelidade"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "setor_atuacao",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "industria",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "comercio",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "serviço",
+          "synonyms": [
+            "servico"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "serviço",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "No momento não atendemos o seu setor, estamos trabalhando continuamente para melhorar nossos serviços. "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_4_1581796700638",
+      "conditions": "@setor_atuacao:serviço",
+      "dialog_node": "node_1_1581797218009",
+      "previous_sibling": "node_7_1581796806122"
+    },
+    {
+      "type": "standard",
+      "title": "comercio",
+      "output": {
+        "generic": []
+      },
+      "parent": "node_4_1581796700638",
+      "context": {},
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_9_1581774916398"
+      },
+      "conditions": "@setor_atuacao:comercio",
+      "dialog_node": "node_9_1581797040601",
+      "previous_sibling": "node_1_1581797218009"
+    },
+    {
+      "type": "standard",
+      "title": "industria",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "No momento não atendemos o seu setor, estamos trabalhando continuamente para melhorar nossos serviços. "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_4_1581796700638",
+      "conditions": "@setor_atuacao:industria",
+      "dialog_node": "node_7_1581796806122"
+    },
+    {
+      "type": "standard",
+      "title": "preco_concorrentes",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "title": "Você costuma olhar o preço dos seus concorrentes periodicamente?",
+            "options": [
+              {
+                "label": "Sim",
+                "value": {
+                  "input": {
+                    "text": "sim"
+                  }
+                }
+              },
+              {
+                "label": "Não",
+                "value": {
+                  "input": {
+                    "text": "não"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          },
+          {
+            "values": [
+              {
+                "text": "Vamos para a próxima questão."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1581833253569",
+      "context": {
+        "pontuacao": "<? $pontuacao + $pontosBaseNao ?>"
+      },
+      "conditions": "@continuar_conversa:preco_concorrentes",
+      "dialog_node": "node_2_1581776115678",
+      "previous_sibling": "node_5_1581775495364"
+    },
+    {
+      "type": "standard",
+      "title": "perguntar_clientes",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "title": "Você pergunta ou ouve de seus clientes o que eles acham de seu preço ?",
+            "options": [
+              {
+                "label": "Sim",
+                "value": {
+                  "input": {
+                    "text": "sim"
+                  }
+                }
+              },
+              {
+                "label": "Não",
+                "value": {
+                  "input": {
+                    "text": "não"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_9_1581833253569",
+      "context": {
+        "pontuacao": "<? $pontuacao + $pontosBaseSim ?>"
+      },
+      "conditions": "@continuar_conversa:perguntar_clientes",
+      "dialog_node": "node_5_1581775495364",
+      "previous_sibling": "node_9_1581774916398"
+    },
+    {
+      "type": "standard",
+      "title": "preco_produto",
+      "output": {
+        "generic": [
+          {
+            "title": "Na sua percepção, o preço do seu produto/serviço é melhor ou igual aos dos seus concorrentes ?",
+            "options": [
+              {
+                "label": "Sim",
+                "value": {
+                  "input": {
+                    "text": "perguntar_clientes"
+                  }
+                }
+              },
+              {
+                "label": "Não",
+                "value": {
+                  "input": {
+                    "text": "preco_concorrentes"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_9_1581833253569",
+      "conditions": "@continuar_conversa:preco_produto",
+      "dialog_node": "node_9_1581774916398"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Qual a pontuação ?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_3_1581829817422",
+      "event_name": "focus",
+      "dialog_node": "handler_6_1581829817465",
+      "previous_sibling": "handler_5_1581829817465"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_3_1581829817422",
+      "context": {
+        "pontuacao": "@sys-number"
+      },
+      "conditions": "@sys-number",
+      "event_name": "input",
+      "dialog_node": "handler_5_1581829817465"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "Sugestão: Faça uma visita para pelo menos 3 de seus concorrentes, e se perguntes as seguintes questões:"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": " 1) Anote o preço de alguns produtos de seus concorrentes"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": " 2) Como ele consegue chegar nesse preço ?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "3) Será que ele tem fornecedores melhores do que eu?  Eu consigo chegar nesse preço e ainda ter lucro ?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1581776115678",
+      "context": {
+        "pontuacao": "<? $pontuacao + $pontosBaseNao ?>",
+        "proxima_acao": "tipo_produtos"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_1_1581834855340"
+      },
+      "conditions": "#falso",
+      "dialog_node": "node_3_1581776405675",
+      "previous_sibling": "node_5_1581776362572"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1581776115678",
+      "context": {
+        "pontuacao": "<? $pontuacao + $pontosBaseSim ?>"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_6_1581776657986"
+      },
+      "conditions": "#verdadeiro",
+      "dialog_node": "node_5_1581776362572"
+    },
+    {
+      "type": "standard",
+      "title": "fazer_anuncios",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "title": "Já tentou fazer anúncios para aumentar a quantidade de pessoas que conhecem a sua marca ?",
+            "options": [
+              {
+                "label": "Sim",
+                "value": {
+                  "input": {
+                    "text": "sim"
+                  }
+                }
+              },
+              {
+                "label": "Não",
+                "value": {
+                  "input": {
+                    "text": "não"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_6_1581833874543",
+      "context": {
+        "pontuacao": "<? $pontuacao + $pontosBaseNao ?>"
+      },
+      "conditions": "@continuar_conversa:fazer_anuncios",
+      "dialog_node": "node_6_1581774114950",
+      "previous_sibling": "node_4_1581643943910"
+    },
+    {
+      "type": "standard",
+      "title": "localização",
+      "output": {
+        "generic": [
+          {
+            "title": "O local do seu empreendimento tem muitos possíveis clientes passando ?",
+            "options": [
+              {
+                "label": "Sim",
+                "value": {
+                  "input": {
+                    "text": "sim"
+                  }
+                }
+              },
+              {
+                "label": "Não",
+                "value": {
+                  "input": {
+                    "text": "fazer_anuncios"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_6_1581833874543",
+      "context": {},
+      "conditions": "@continuar_conversa:localizacao",
+      "dialog_node": "node_4_1581643943910"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Que tal fazer uma promoção ?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "1) Oferecer desconto nos períodos em que se vende menos - Muitas lojas vendem menos em janeiro, então aproveitam para fazer promoções e oferecer descontos para incentivarem a compra de seus clientes."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "2) Ajuste seu preço para que o custo benefício do cliente valha mais a pena - oferecendo uma unidade por 10 reais, duas unidades por 15 reais, assim o cliente tem a sensação de que \"compensa\" comprar mais e está pagando menos ao comprar mais."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_4_1581777063855",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_1_1581834855340"
+      },
+      "conditions": "#falso",
+      "dialog_node": "node_10_1581779969179",
+      "previous_sibling": "node_1_1581385852051"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "title": "Quais tipos de promoções você fez ?",
+            "options": [
+              {
+                "label": "2 pelo preço de 1",
+                "value": {
+                  "input": {
+                    "text": "conseguiu_aumentar_vendas"
+                  }
+                }
+              },
+              {
+                "label": "Desconto",
+                "value": {
+                  "input": {
+                    "text": "conseguiu_aumentar_vendas"
+                  }
+                }
+              },
+              {
+                "label": "Brindes",
+                "value": {
+                  "input": {
+                    "text": "conseguiu_aumentar_vendas"
+                  }
+                }
+              },
+              {
+                "label": "Cartão Fidelidade",
+                "value": {
+                  "input": {
+                    "text": "conseguiu_aumentar_vendas"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_4_1581777063855",
+      "context": {
+        "pontuacao": "<? $pontuacao + $pontosBaseSim ?>"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "user_input",
+        "dialog_node": "node_1_1581386420644"
+      },
+      "conditions": "#verdadeiro",
+      "dialog_node": "node_1_1581385852051"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "Sugestão: Faça uma lista dos seus produtos mais vendidos por porcentagem, você pode se surpreender com o resultado! Pense e depois pergunte para o seu cliente: Que outros produtos podem resolver os problemas de meus clientes ?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_6_1581776657986",
+      "context": {
+        "pontuacao": "<? $pontuacao + $pontosBaseNao ?>",
+        "proxima_acao": "perguntar_clientes"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_1_1581834855340"
+      },
+      "conditions": "#falso",
+      "dialog_node": "node_3_1581776796774"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_4_1581643943910",
+      "context": {
+        "pontuacao": "<? $pontuacao + $pontosBaseSim ?>"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_4_1581777063855"
+      },
+      "conditions": "#verdadeiro",
+      "dialog_node": "node_10_1581773913097"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "Questione alguns clientes durante a próxima semana e veja o que aprende com eles."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1581776835641",
+      "context": {
+        "pontuacao": "<? $pontuacao + $pontosBaseNao ?>",
+        "proxima_acao": "localizacao"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_1_1581834855340"
+      },
+      "conditions": "#falso",
+      "dialog_node": "node_4_1581777021800",
+      "previous_sibling": "node_7_1581776981362"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1581776835641",
+      "context": {
+        "pontuacao": "<? $pontuacao + $pontosBaseSim ?>"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_4_1581643943910"
+      },
+      "conditions": "#verdadeiro",
+      "dialog_node": "node_7_1581776981362"
+    },
+    {
+      "type": "standard",
+      "title": "produtos_necessidades",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": ""
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "title": "Você costuma perguntar para o seus clientes quais produtos que você vende atendem melhor suas necessidades ?",
+            "options": [
+              {
+                "label": "Sim",
+                "value": {
+                  "input": {
+                    "text": "sim"
+                  }
+                }
+              },
+              {
+                "label": "Não",
+                "value": {
+                  "input": {
+                    "text": "não"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_8_1581833410511",
+      "context": {
+        "pontuacao": "<? $pontuacao + $pontosBaseSim ?>"
+      },
+      "conditions": "@continuar_conversa:produtos_necessidade",
+      "dialog_node": "node_2_1581776835641",
+      "previous_sibling": "node_6_1581776657986"
+    },
+    {
+      "type": "standard",
+      "title": "tipos_produtos",
+      "output": {
+        "generic": [
+          {
+            "title": "Você sabe quais são os seus produtos/serviços mais vendidos ?",
+            "options": [
+              {
+                "label": "Sim",
+                "value": {
+                  "input": {
+                    "text": "produtos_necessidade"
+                  }
+                }
+              },
+              {
+                "label": "Não",
+                "value": {
+                  "input": {
+                    "text": "não"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_8_1581833410511",
+      "conditions": "@continuar_conversa:tipo_produtos",
+      "dialog_node": "node_6_1581776657986"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_8_1581780335848",
+      "event_name": "focus",
+      "dialog_node": "handler_1_1581780335890",
+      "previous_sibling": "handler_3_1581780335890"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_8_1581780335848",
+      "context": {
+        "100": "$pontuacao"
+      },
+      "conditions": "$pontuacao",
+      "event_name": "input",
+      "dialog_node": "handler_3_1581780335890"
+    },
+    {
+      "type": "standard",
+      "title": "sim",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1581386420644",
+      "context": {
+        "pontuacao": "<? $pontuacao + $pontosBaseSim ?>"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_1_1581779877381"
+      },
+      "conditions": "#verdadeiro",
+      "dialog_node": "node_6_1581779798020",
+      "previous_sibling": "node_5_1581388140099"
+    },
+    {
+      "type": "standard",
+      "title": "nao_alcancou_meta",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "Que tal seguir uma das seguintes sugestões?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "1) Oferecer desconto nos períodos em que se vende menos - Muitas lojas vendem menos em janeiro, então aproveitam para fazer promoções e oferecer descontos para incentivar a compra de seus clientes."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": " 2) Ajuste seu preço para que o custo benefício do cliente valha mais a pena - oferecendo uma unidade por 10 reais, duas unidades por 15 reais, assim o cliente tem a sensação de que \"compensa\" comprar mais e está pagando menos ao comprar mais."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1581386420644",
+      "context": {
+        "pontuacao": "<? $pontuacao + $pontosBaseNao ?>",
+        "proxima_acao": "fim"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_1_1581834855340"
+      },
+      "conditions": "#falso",
+      "dialog_node": "node_5_1581388140099"
+    },
+    {
+      "type": "slot",
+      "parent": "node_3_1581774781015",
+      "variable": "$100",
+      "dialog_node": "slot_8_1581780335848"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "Sugestão: Faça uma propaganda para que mais pessoas conheçam a sua empresa, existem diversas formas de propaganda, escolha uma que caiba no seu bolso e mão a obra!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "Coloque sua empresa no Google Maps, é de graça e sua marca fica visível para todos!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_6_1581774114950",
+      "context": {
+        "pontuacao": "<? $pontuacao + $pontosBaseNao ?>",
+        "proxima_acao": "promocoes"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_1_1581834855340"
+      },
+      "conditions": "#falso",
+      "dialog_node": "node_6_1581774873619",
+      "previous_sibling": "node_3_1581774781015"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_6_1581774114950",
+      "context": {
+        "pontuacao": "<? $pontuacao + $pontosBaseSim ?>"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_4_1581777063855"
+      },
+      "conditions": "#verdadeiro",
+      "dialog_node": "node_3_1581774781015"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "Converse com alguns de seus clientes, principalmente aqueles que compram frequentemente seus produtos ou serviços e faça perguntas como:"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          },
+          {
+            "values": [
+              {
+                "text": "1) O que seus clientes acham de seus preços ?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "2) Existe algum produto/serviço que acham mais caro ou mais barato ?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "3) O que acham dos preços dos concorrentes ?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_5_1581775495364",
+      "context": {
+        "pontuacao": "<? $pontuacao + $pontosBaseSim ?>",
+        "proxima_acao": "tipo_produtos"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_1_1581834855340"
+      },
+      "conditions": "#falso",
+      "dialog_node": "node_3_1581775933122",
+      "previous_sibling": "node_5_1581775845819"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": ""
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_5_1581775495364",
+      "context": {
+        "pontuacao": "<? $pontuacao +$pontosBaseSim ?>"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_6_1581776657986"
+      },
+      "conditions": "#verdadeiro",
+      "dialog_node": "node_5_1581775845819"
+    },
+    {
+      "type": "standard",
+      "title": "conseguiu_aumentar_vendas",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "title": "Com a promoção você conseguiu alcançar sua meta de vendas ?",
+            "options": [
+              {
+                "label": "Sim",
+                "value": {
+                  "input": {
+                    "text": "sim"
+                  }
+                }
+              },
+              {
+                "label": "Não",
+                "value": {
+                  "input": {
+                    "text": "não"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_9_1581833987243",
+      "context": {
+        "pontuacao": "<? $pontuacao + $pontosBaseSim ?>"
+      },
+      "conditions": "@continuar_conversa:conseguiu_aumentar_vendas",
+      "dialog_node": "node_1_1581386420644",
+      "previous_sibling": "node_4_1581777063855"
+    },
+    {
+      "type": "standard",
+      "title": "promocoes",
+      "output": {
+        "generic": [
+          {
+            "title": "Já tentou fazer promoções ?",
+            "options": [
+              {
+                "label": "Sim",
+                "value": {
+                  "input": {
+                    "text": "sim"
+                  }
+                }
+              },
+              {
+                "label": "Não",
+                "value": {
+                  "input": {
+                    "text": "não"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_9_1581833987243",
+      "dialog_node": "node_4_1581777063855"
+    },
+    {
+      "type": "slot",
+      "parent": "node_2_1581827532562",
+      "variable": "$pontuacao",
+      "dialog_node": "slot_3_1581829817422"
+    },
+    {
+      "type": "frame",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Agora escreva para onde deseja ir"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_3_1581826109359",
+      "context": {
+        "primeiraVez": "<? false ?>"
+      },
+      "conditions": "#falso",
+      "dialog_node": "node_2_1581827532562",
+      "previous_sibling": "node_6_1581827338132"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_3_1581826109359",
+      "disabled": true,
+      "dialog_node": "response_1_1581827210153",
+      "previous_sibling": "node_2_1581827532562"
+    },
+    {
+      "type": "standard",
+      "parent": "node_3_1581826109359",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "Bem-vindo"
+      },
+      "conditions": "#verdadeiro",
+      "dialog_node": "node_6_1581827338132"
+    },
+    {
+      "type": "folder",
+      "title": "Preço",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_9_1581833253569",
+      "previous_sibling": "node_4_1581796700638"
+    },
+    {
+      "type": "folder",
+      "title": "Tipos",
+      "dialog_node": "node_8_1581833410511",
+      "previous_sibling": "node_9_1581833253569"
+    },
+    {
+      "type": "folder",
+      "title": "Promocoes",
+      "dialog_node": "node_9_1581833987243",
+      "previous_sibling": "node_6_1581833874543"
+    },
+    {
+      "type": "folder",
+      "title": "Localizacao",
+      "dialog_node": "node_6_1581833874543",
+      "previous_sibling": "node_8_1581833410511"
+    },
+    {
+      "type": "standard",
+      "title": "Pergunta do setor",
+      "output": {
+        "generic": [
+          {
+            "title": "Qual o setor de atuação da sua empresa ?",
+            "options": [
+              {
+                "label": "Comércio",
+                "value": {
+                  "input": {
+                    "text": "comercio"
+                  }
+                }
+              },
+              {
+                "label": "Serviço",
+                "value": {
+                  "input": {
+                    "text": "servico"
+                  }
+                }
+              },
+              {
+                "label": "Indústria",
+                "value": {
+                  "input": {
+                    "text": "industria"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "context": {
+        "pontuacao": 0,
+        "pontosBaseNao": 5,
+        "pontosBaseSim": 10
+      },
+      "conditions": "welcome",
+      "dialog_node": "node_4_1581796700638",
+      "previous_sibling": "Bem-vindo"
+    },
+    {
+      "type": "standard",
+      "title": "Pontuacao",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Obrigado pela sua opinião."
+              },
+              {
+                "text": ""
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          },
+          {
+            "values": [
+              {
+                "text": "A sua pontuação final é <? $pontuacao ?>"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "Parabéns! Você atingiu o nível 1 e ganhou uma sessão grátis de coaching de comunicação em vendas, uma oferta limitada válida até 23 de fevereiro de 2020, agende já neste <a href=\"https://paginas.nildargoncalves.com.br/nildar-goncalves-sabrina\" target=\"_blank\">link<a/>"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "context": {},
+      "conditions": "@continuar_conversa:mostrar_pontuacao",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_2_1581890793512",
+      "previous_sibling": "node_1_1581834855340"
+    },
+    {
+      "type": "standard",
+      "title": "Em outros casos",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Eu não entendi. Você poderia escolher uma das opções ?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Em outros casos",
+      "previous_sibling": "node_2_1581890793512",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "Voltar depois",
+      "output": {
+        "generic": [
+          {
+            "title": "Depois de fazer o que sugeri, volte e me conte como foi, combinado ? ",
+            "options": [
+              {
+                "label": "Legal, gostei da ideia",
+                "value": {
+                  "input": {
+                    "text": "mostrar_pontuacao"
+                  }
+                }
+              },
+              {
+                "label": "Não gostei da ideia",
+                "value": {
+                  "input": {
+                    "text": "mostrar_pontuacao"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "context": {},
+      "conditions": "@continuar_conversa:voltar_depois",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_1_1581834855340",
+      "previous_sibling": "node_1_1581779877381"
+    },
+    {
+      "type": "standard",
+      "title": "fim",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Você chegou ao fim."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "A sua pontuação final é <? $pontuacao ?>"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "context": {
+        "fim": "<? true ?>"
+      },
+      "conditions": "@continuar_conversa:fim",
+      "dialog_node": "node_1_1581779877381",
+      "previous_sibling": "node_9_1581833987243"
+    },
+    {
+      "type": "standard",
+      "title": "Bem-vindo",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Seja bem vindo. Meu nome é Sabrina, sua assistente virtual. Vou fazer algumas perguntas de diagnostico para entender sua empresa. E ao final vou lhe apresentar algumas sugestões."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "context": {
+        "pontuacao": 0,
+        "pontosBaseNao": 5,
+        "pontosBaseSim": 10
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_4_1581796700638"
+      },
+      "conditions": "",
+      "dialog_node": "Bem-vindo",
+      "previous_sibling": "node_3_1581826109359"
+    },
+    {
+      "type": "standard",
+      "title": "Ver se é primeira vez",
+      "output": {
+        "generic": [
+          {
+            "title": "É o seu primeiro acesso ?",
+            "options": [
+              {
+                "label": "Sim",
+                "value": {
+                  "input": {
+                    "text": "sim"
+                  }
+                }
+              },
+              {
+                "label": "Não",
+                "value": {
+                  "input": {
+                    "text": "Não"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "context": {
+        "pontosBaseNao": 5,
+        "pontosBaseSim": 10
+      },
+      "metadata": {
+        "_customization": {
+          "mcr": false
+        }
+      },
+      "conditions": "",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_3_1581826109359"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "disambiguation": {
+      "prompt": "Você quis dizer:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "Nenhuma das anteriores"
+    },
+    "human_agent_assist": {
+      "prompt": "Você quis dizer:"
+    }
+  },
+  "learning_opt_out": false,
+  "name": "Vendas",
+  "language": "pt-br",
+  "description": "Analises para do micro empreendedor aumentar as vendas"
+}

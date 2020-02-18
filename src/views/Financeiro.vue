@@ -12,8 +12,8 @@
             :key="pergunta"
             v-for="pergunta in perguntas"
             style="margin:15px"
+            v-html="pergunta"
             >
-            {{pergunta}}
           </v-row>
           <v-row>
             <v-col>
