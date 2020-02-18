@@ -16,11 +16,15 @@
             {{pergunta}}
           </v-row>
           <v-row>
+            <v-col>
+            </v-col>
             <v-col
             :key="opcao.value.input.text"
             v-for="opcao in opcoes"
             >
-            <v-btn small :color="corBotao(opcao.label)" style="padding:20px" class="headline" @click="enviarPergunta(opcao.value)">{{opcao.label}}</v-btn>
+            <v-btn :color="corBotao(opcao.label)"  width="195px" height="40px" class="font-weight-regular" @click="enviarPergunta(opcao.value)">{{opcao.label}}</v-btn>
+            </v-col>
+            <v-col>
             </v-col>
           </v-row>
         </v-responsive>
@@ -87,7 +91,6 @@ export default {
           }
 
           if (typeof r.data.context.skills['main skill'].user_defined.fim !== 'undefined' && r.data.context.skills['main skill'].user_defined.fim === true) {
-            console.log('fim')
             localStorage.removeItem('user_defined')
             return
           }
