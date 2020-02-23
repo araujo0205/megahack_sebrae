@@ -1,8 +1,8 @@
 # Sabrina - Consultora Digital
 
-A Sabrina tem como objetivo auxiliar o micro e pequeno empreendedor nas principais dúvidas do setor de Vendas e financeiro.
+A Sabrina é uma consultora digital que tem como objetivo auxiliar o microempreendedor (MEI) nas principais dúvidas do setor de vendas e finanças.
 
-Utilizando a Inteligência Artificial Watson simplificamos o caminho entre entender o nível do empreendedor e qual o seu próximo passo.
+Utilizando a Inteligência Artificial Watson (IBM) simplificamos o caminho entre entender o nível do empreendedor e qual o seu próximo passo.
 
 
 ## Project setup
