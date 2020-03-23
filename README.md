@@ -5,10 +5,12 @@ A Sabrina é uma consultora digital que tem como objetivo auxiliar o microempree
 Utilizando a Inteligência Artificial Watson (IBM) simplificamos o caminho entre entender o nível do empreendedor e qual o seu próximo passo.
 
 ### Equipe
-David Araújo Souza
-Victor Katsuo Yamashiro
-Quintiliano Paquini Nery
-Fernando Neves
+<ul>
+<li>David Araújo Souza</li>
+<li>Victor Katsuo Yamashiro</li>
+<li>Quintiliano Paquini Nery</li>
+<li>Fernando Neves</li>
+</ul>
 
 ## Project setup
 ```
