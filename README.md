@@ -4,6 +4,11 @@ A Sabrina é uma consultora digital que tem como objetivo auxiliar o microempree
 
 Utilizando a Inteligência Artificial Watson (IBM) simplificamos o caminho entre entender o nível do empreendedor e qual o seu próximo passo.
 
+### Equipe
+David Araújo Souza
+Victor Katsuo Yamashiro
+Quintiliano Paquini Nery
+Fernando Neves
 
 ## Project setup
 ```
@@ -37,3 +42,5 @@ npm run test:unit
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
